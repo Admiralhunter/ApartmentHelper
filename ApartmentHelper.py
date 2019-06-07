@@ -1,6 +1,5 @@
 import json
 import time
-from pprint import pprint
 
 from selenium import webdriver
 
@@ -10,6 +9,14 @@ inputs = dict()
 #  City format: (city, ST)
 inputs['location'] = "Grove City, OH"
 inputs['Zip Code'] = 43123
+
+#  Open json file containing weather object
+with open('ApartmentHelper.json') as f:
+    Data = json.load(f)
+
+#  dictionary to hold all values of the weather for location
+information = {'weather': {}, 'areaVibe': {}}
+
 
 
 def main():
@@ -31,19 +38,16 @@ def main():
     elem.click()
     time.sleep(1)
 
-    #  dictionary to hold all values of the weather for location
-    weather = {}
+    for val in Data['weather']:
+        get_value_xpath(driver, information['weather'], val, Data['weather'][val])
 
-    with open('Weather.json') as f:
-        weatherData = json.load(f)
+    for val in information['weather']:
+        print(val + ': ' + information['weather'][val])
 
-    for val in weatherData['weather']:
-        get_value_xpath(driver, weather, val, weatherData['weather'][val])
-
-    for val in weather:
-        print(val + ': ' + weather[val])
 
     #  This section will go to Areavibe and gather demographics for the city
+
+
     cityUrl = inputs['location'].split(", ")[0]
     cityUrl = cityUrl.replace(' ', '+')
     cityUrl = cityUrl.lower()
@@ -52,7 +56,6 @@ def main():
     city = inputs['location'].split(", ")[0]
     state = inputs['location'].split(", ")[1]
     areaVibeLocation = json.loads(driver.find_element_by_tag_name("body").text)
-    pprint(areaVibeLocation)
     for val in areaVibeLocation:
         stateCheck = val['state_abbr']
         cityCheck = val['city']
@@ -62,6 +65,13 @@ def main():
             break
 
     driver.get("https://www.areavibes.com/" + cityUrl +"-" + state.lower() + "/livability/?ll=" + str(lat) + "+" + str(lon))
+
+    for val in Data['areaVibe']:
+        get_value_xpath(driver, information['areaVibe'], val, Data['areaVibe'][val])
+
+    for val in information['areaVibe']:
+        print(val + ': ' + information['areaVibe'][val])
+
     driver.quit()
 
 
