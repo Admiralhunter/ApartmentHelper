@@ -1,4 +1,8 @@
 {
+  "inputs": {
+    "location": "Grove City, OH",
+    "zipCode": "43123"
+  },
   "weather": {
     "locationDescription": "//div[@class = 'Section-body charts_only_do_hide'][1]//p[1]",
     "bestTourismTime": "//div[@class = 'Section-body charts_only_do_hide'][1]//p[2]",
