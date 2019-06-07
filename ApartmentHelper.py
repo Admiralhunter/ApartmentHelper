@@ -71,7 +71,7 @@ def main():
         sys.exit("The latitude or longitude could not be retrieved.")
 
     #  Goes to proper page on areavibe to start getting data
-    driver.get("https://www.areavibes.com/" + cityUrl +"-" + state.lower() + "/livability/?ll=" + str(lat) + "+" + str(lon))
+    driver.get("https://www.areavibes.com/" + cityUrl + "-" + state.lower() + "/livability/?ll=" + str(lat) + "+" + str(lon))
 
     #  iterates through all keys of the areaVibe object and inputs the value
     for val in Data['areaVibe']:
