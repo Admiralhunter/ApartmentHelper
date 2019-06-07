@@ -1,0 +1,16 @@
+{
+  "weather": {
+    "locationDescription": "//div[@class = 'Section-body charts_only_do_hide'][1]//p[1]",
+    "bestTourismTime": "//div[@class = 'Section-body charts_only_do_hide'][1]//p[2]",
+    "warmSeason": "//div[@class = 'Section-body charts_only_do_hide'][2]/p[1]",
+    "coldSeason": "//div[@class = 'Section-body charts_only_do_hide'][2]/p[2]",
+    "wetSeason": "//div[@class = 'Section-body charts_only_do_hide'][4]/p[2]",
+    "drySeason": "//div[@class = 'Section-body charts_only_do_hide'][4]/p[3]",
+    "snowFall": "//div[@class = 'Section-body charts_only_do_hide'][4]/p[10]",
+    "humidity": "//div[@class = 'Section-body charts_only_do_hide'][6]/p[3]",
+    "surfaceLayout": "//div[@class = 'Section-body charts_only_do_hide'][11]/p[3]"
+  },
+  "areaVibe": {
+    "livabilityScore": "//div[@class = 'score-hero-info']/em"
+  }
+}
